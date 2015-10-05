@@ -20,7 +20,7 @@ USB TTL    |Huzzah ESP8266|PCD8544/Nokia 5110 |Description
            |12         |D/C        |Output from display data/command to ESP
            |#5         |CS         |Output from ESP to chip select/enable display
            |#4         |RST        |Output from ESP to reset display
-           |           |LED        |3.3V to turn backlight on, GND off
+           |15         |LED        |3.3V to turn backlight on, GND off
 GND (blk)  |GND        |           |Ground
 5V  (red)  |V+         |           |5V power from PC or charger
 TX  (green)|RX         |           |Serial data from IDE to ESP
