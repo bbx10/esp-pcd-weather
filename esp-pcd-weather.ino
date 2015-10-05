@@ -40,9 +40,15 @@ const char PASSWORD[] = "************;
 // Use your own API key by signing up for a free developer account.
 // http://www.wunderground.com/weather/api/
 #define WU_API_KEY "****************"
-// Specify your favorite location
-#define WU_STATE "CA"
-#define WU_CITY  "San_Francisco"
+
+// Specify your favorite location one of these ways.
+//#define WU_LOCATION "CA/San_Francisco"
+
+// US ZIP code
+//#define WU_LOCATION "90210"
+
+// Country and city
+#define WU_LOCATION "Australia/Sydney"
 
 /******************************************************************
 ESP8266 with PCD8544 display
@@ -67,7 +73,7 @@ USB TTL     Huzzah      Nokia 5110  Description
             12          D/C         Output from display data/command to ESP
             #5          CS          Output from ESP to chip select/enable display
             #4          RST         Output from ESP to reset display
-                        LED         3.3V to turn backlight on, GND off
+            15          LED         3.3V to turn backlight on, GND off
 
 GND (blk)   GND                     Ground
 5V  (red)   V+                      5V power from PC or charger
@@ -246,7 +252,7 @@ http://api.wunderground.com/api/c596b7af83bae426/alerts/q/IA/Des_Moines.json
 
 // HTTP request
 const char WUNDERGROUND_REQ[] =
-    "GET /api/" WU_API_KEY "/conditions/q/" WU_STATE "/" WU_CITY ".json HTTP/1.1\r\n"
+    "GET /api/" WU_API_KEY "/conditions/q/" WU_LOCATION ".json HTTP/1.1\r\n"
     "User-Agent: ESP8266/0.1\r\n"
     "Accept: */*\r\n"
     "Host: " WUNDERGROUND "\r\n"
@@ -256,6 +262,10 @@ const char WUNDERGROUND_REQ[] =
 void setup()
 {
   Serial.begin(115200);
+
+  // Turn LCD backlight on
+  pinMode(15, OUTPUT);
+  digitalWrite(15, HIGH);
 
   // TODO Reconnect to AP, if disconnected
 
@@ -323,7 +333,7 @@ void loop()
   while (httpclient.connected() || httpclient.available()) {
     if (skip_headers) {
       String aLine = httpclient.readStringUntil('\n');
-      Serial.println(aLine);
+      //Serial.println(aLine);
       // Blank line denotes end of headers
       if (aLine.length() <= 1) {
         skip_headers = false;
