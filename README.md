@@ -29,7 +29,7 @@ RX  (white)|TX         |           |Serial data to ESP from IDE
 ## Dependencies ##
 
 * [Fork of Adafruit PCD8544 library with changes for ESP8266]
-  (https://github.com/bbx10/Adafruit-PCD8544-Nokia-5110-LCD-library.git). Use the
-  esp8266 branch!
+  (https://github.com/bbx10/Adafruit-PCD8544-Nokia-5110-LCD-library/tree/esp8266).
+  Use the esp8266 branch!
 * Adafruit GFX library. Use the Arduino IDE Library Manager to get the latest version
 * Arduino JSON library. Use the Arduino IDE Library Manager to get the latest version
