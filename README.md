@@ -33,3 +33,7 @@ RX  (white)|TX         |           |Serial data to ESP from IDE
   Use the esp8266 branch!
 * Adafruit GFX library. Use the Arduino IDE Library Manager to get the latest version
 * Arduino JSON library. Use the Arduino IDE Library Manager to get the latest version
+
+NOTE: This program requires the ESP8266 staging version dated Sep 30, 2015 or newer. In the IDE boards manager, the version string is currently "1.6.5-1160-gef26c5f".
+
+* https://github.com/esp8266/arduino#staging-version-
