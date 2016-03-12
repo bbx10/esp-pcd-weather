@@ -33,7 +33,18 @@ RX  (white)|TX         |           |Serial data to ESP from IDE
   Use the esp8266 branch!
 * Adafruit GFX library. Use the Arduino IDE Library Manager to get the latest version
 * Arduino JSON library. Use the Arduino IDE Library Manager to get the latest version
+* ESP8266 board package. Use the stable version. https://github.com/esp8266/arduino#stable-version-
 
-NOTE: This program requires the ESP8266 staging version dated Sep 30, 2015 or newer. In the IDE boards manager, the version string is currently "1.6.5-1160-gef26c5f".
+## Recently tested versions ##
 
-* https://github.com/esp8266/arduino#staging-version-
+The libraries and board package should be installed using the IDE library and
+board managers.
+
+* IDE 1.6.8
+* Adafruit GFX library 1.1.5
+* ArduinoJSON library 5.1.1
+* ESP8266 board package 2.1.0
+* Fork of Adafruit PCD8544 library 1.0.0 with ESP8266 changes. Download the ZIP file from the
+following link then use the IDE `Sketch | Include Library | Add .ZIP Library` option to install it.
+
+https://github.com/bbx10/Adafruit-PCD8544-Nokia-5110-LCD-library/tree/esp8266

@@ -34,8 +34,8 @@ SOFTWARE.
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
-const char SSID[]     = "***********";
-const char PASSWORD[] = "************;
+static const char SSID[]     = "***********";
+static const char PASSWORD[] = "************";
 
 // Use your own API key by signing up for a free developer account.
 // http://www.wunderground.com/weather/api/
@@ -273,6 +273,7 @@ void setup()
   display.begin();
   display.setContrast(50);
   display.setTextSize(1);
+  display.setTextWrap(false);
   display.setTextColor(BLACK);
 
   // Give WU credit.
@@ -302,6 +303,8 @@ void setup()
 }
 
 static char respBuf[4096];
+
+bool showWeather(char *json);
 
 void loop()
 {
@@ -427,13 +430,15 @@ bool showWeather(char *json)
   time = &observation_time[17];
 
   display.clearDisplay();
-  display.print(date);
-  display.print(time);
+  display.println(date);
+  display.println(time);
   display.print(temp_f, 1); display.print  (F(" F "));
   display.print(temp_c, 1); display.println(F(" C"));
   display.print(humi);      display.print(F(" RH "));
   display.print(pressure_mb); display.println(F("mb"));
+  display.setTextWrap(true);
   display.print(weather);
   display.display();
+  display.setTextWrap(false);
   return true;
 }
